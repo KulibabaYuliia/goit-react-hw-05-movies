@@ -16,4 +16,9 @@ export async function fetchMovieDetails(movieId) {
   return res;
 }
 
-// https://api.themoviedb.org/3/movie/111
+export async function fetchSearchedMovies(movieName) {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?query=${movieName}&language=en-US&api_key=${KEY}`
+  );
+  return res;
+}

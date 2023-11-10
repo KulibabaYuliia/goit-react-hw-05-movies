@@ -1,7 +1,7 @@
 // import { StyledGallery } from './TrendingFilmsList.styled';
 import { Link } from 'react-router-dom';
 
-const TrendingFilmsList = ({ trendingMovies }) => {
+const MoviesList = ({ trendingMovies }) => {
   return (
     <ol>
       {trendingMovies &&
@@ -14,4 +14,4 @@ const TrendingFilmsList = ({ trendingMovies }) => {
   );
 };
 
-export default TrendingFilmsList;
+export default MoviesList;

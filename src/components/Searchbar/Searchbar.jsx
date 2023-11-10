@@ -6,24 +6,15 @@ import {
 } from './Searchbar.styled';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
+import { notifyEmtySearch } from 'components/Error/Error';
+import { useSearchParams } from 'react-router-dom';
 
 let userSchema = yup.object().shape({
   query: yup.string(),
 });
 
-export const Searchbar = ({ onSubmit }) => {
-  const notifyEmtySearch = () =>
-    toast.warn(`Search shouldn't be empty`, {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
+export const Searchbar = () => {
+  const [, setSearchParams] = useSearchParams();
 
   const submitHandler = (values, action) => {
     if (values.query.trim() === '') {
@@ -31,7 +22,7 @@ export const Searchbar = ({ onSubmit }) => {
       return;
     }
 
-    onSubmit(values);
+    setSearchParams({ query: values.query });
     action.resetForm();
   };
 

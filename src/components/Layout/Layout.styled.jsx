@@ -19,3 +19,7 @@ export const StyledLink = styled(NavLink)`
     color: orange;
   }
 `;
+
+export const ContainerStyled = styled.div`
+  padding: 20px;
+`;

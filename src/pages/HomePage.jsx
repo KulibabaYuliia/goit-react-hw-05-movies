@@ -3,7 +3,7 @@ import { fetchTrendingMovies } from 'components/Api/Api';
 import { Loader } from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import { notifyNoResultFound } from 'components/Error/Error';
-import TrendingFilmsList from 'components/TrendingFilmsList/TrendingFilmsList';
+import TrendingFilmsList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);

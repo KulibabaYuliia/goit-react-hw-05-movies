@@ -12,3 +12,15 @@ export const notifyNoResultFound = error =>
     progress: undefined,
     theme: 'light',
   });
+
+export const notifyEmtySearch = () =>
+  toast.warn(`Search shouldn't be empty`, {
+    position: 'top-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });

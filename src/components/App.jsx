@@ -3,6 +3,7 @@
 // import { Modal } from './Modal/Modal';
 // import { fetch } from './Api/Api';
 import Home from 'pages/HomePage';
+import Movies from 'pages/MoviesPage';
 import { Layout } from './Layout/Layout';
 import MovieDetailsPage from 'pages/MovieDetailsPage';
 import { StyledApp } from './App.styled';
@@ -75,7 +76,7 @@ export const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<div />} />
+          <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

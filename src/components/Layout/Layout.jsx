@@ -1,4 +1,9 @@
-import { StyledLink, StyledNav, StyledHeader } from './Layout.styled';
+import {
+  StyledLink,
+  StyledNav,
+  StyledHeader,
+  ContainerStyled,
+} from './Layout.styled';
 
 export const Layout = ({ children }) => {
   return (
@@ -9,7 +14,9 @@ export const Layout = ({ children }) => {
           <StyledLink to="/movies">Movies</StyledLink>
         </StyledNav>
       </StyledHeader>
-      <main>{children}</main>
+      <main>
+        <ContainerStyled>{children}</ContainerStyled>
+      </main>
     </div>
   );
 };
