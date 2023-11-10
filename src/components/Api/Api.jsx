@@ -1,10 +1,19 @@
 import axios from 'axios';
 
-const KEY = '39314249-b9f637c3b6d2b2c91ffe81f29';
+const KEY = 'f254cc864df015fcbf82561d518eee0b';
 
-export async function fetch(search, page) {
+export async function fetchTrendingMovies() {
   const res = await axios.get(
-    `https://pixabay.com/api/?q=${search}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`
+    `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${KEY}`
   );
   return res;
 }
+
+export async function fetchMovieDetails(movieId) {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${KEY}`
+  );
+  return res;
+}
+
+// https://api.themoviedb.org/3/movie/111
