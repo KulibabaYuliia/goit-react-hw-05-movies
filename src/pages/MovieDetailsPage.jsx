@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notifyNoResultFound } from 'components/Error/Error';
 import { Movie } from 'components/MovieDetails/MovieDetails';
+import { Route, Routes } from 'react-router-dom';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -34,6 +35,10 @@ const MovieDetailsPage = () => {
   return (
     <div>
       {movieDetails && <Movie movieDetails={movieDetails} />}
+      <Routes>
+        <Route path="cast" element={<div>cast</div>} />
+        <Route path="reviews" element={<div>reviews</div>} />
+      </Routes>
 
       {loading && <Loader />}
       <ToastContainer />
