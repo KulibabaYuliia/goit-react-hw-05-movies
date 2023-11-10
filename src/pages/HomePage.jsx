@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'components/Api/Api';
 import { Loader } from 'components/Loader/Loader';
-import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { notifyNoResultFound } from 'components/Error/Error';
+import TrendingFilmsList from 'components/TrendingFilmsList/TrendingFilmsList';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);
@@ -34,15 +34,11 @@ const Home = () => {
   return (
     <div>
       <h2>Trending today</h2>
-      <ul>
-        {trendingMovies &&
-          trendingMovies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-      </ul>
+
+      <TrendingFilmsList trendingMovies={trendingMovies} />
+
       {loading && <Loader />}
+
       <ToastContainer />
     </div>
   );

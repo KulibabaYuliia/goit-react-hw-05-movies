@@ -1,13 +1,12 @@
-// import { ImageGallery } from './ImageGallery/ImageGallery';
 // import { Loader } from './Loader/Loader';
 // import { Searchbar } from './Searchbar/Searchbar';
-// import { LoadMoreBtn } from './Button/Button';
 // import { Modal } from './Modal/Modal';
 // import { fetch } from './Api/Api';
 import Home from 'pages/HomePage';
-import MovieDetailsPage from 'pages/MovieDetails';
-import { StyledApp, StyledLink, StyledNav, StyledHeader } from './App.styled';
-import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import MovieDetailsPage from 'pages/MovieDetailsPage';
+import { StyledApp } from './App.styled';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 // import React, { useState, useEffect } from 'react';
 
@@ -71,27 +70,16 @@ export const App = () => {
   //   setPictures(null);
   // };
 
-  // const onLoadMoreHandler = () => {
-  //   setCurrentPage(prevPage => prevPage + 1);
-  // };
-
   return (
     <StyledApp>
-      <div>
-        <StyledHeader>
-          <StyledNav>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/movies">Movies</StyledLink>
-          </StyledNav>
-        </StyledHeader>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<div />} />
-            <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
-          </Routes>
-        </main>
-      </div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<div />} />
+          <Route path="/movies/:movieId/*" element={<MovieDetailsPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Layout>
 
       {/* <Searchbar onSubmit={onSubmit}></Searchbar>
 
