@@ -22,3 +22,17 @@ export async function fetchSearchedMovies(movieName) {
   );
   return res;
 }
+
+export async function fetchMovieCast(movieId) {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US&api_key=${KEY}`
+  );
+  return res;
+}
+
+export async function fetchMovieReviews(movieId) {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&api_key=${KEY}&page=1`
+  );
+  return res;
+}

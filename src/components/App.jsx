@@ -1,7 +1,3 @@
-// import { Loader } from './Loader/Loader';
-// import { Searchbar } from './Searchbar/Searchbar';
-// import { Modal } from './Modal/Modal';
-// import { fetch } from './Api/Api';
 import Home from 'pages/HomePage';
 import Movies from 'pages/MoviesPage';
 import { Layout } from './Layout/Layout';
