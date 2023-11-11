@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Route, Routes, useLocation } from 'react-router-dom';
+import { useParams, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import {
-  fetchMovieDetails,
-  fetchMovieCast,
-  fetchMovieReviews,
-} from 'components/Api/Api';
+import { fetchMovieDetails } from 'components/Api/Api';
 
 import { notifyNoResultFound } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
@@ -17,11 +13,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
 
   const [movieDetails, setMovieDetails] = useState(null);
-  const [movieCast, setMovieCast] = useState(null);
-  const [movieReviews, setMovieReviews] = useState(null);
   const [loading, setLoading] = useState(null);
-
-  const location = useLocation();
 
   useEffect(() => {
     const fetchTodayMovies = async () => {
@@ -41,59 +33,12 @@ const MovieDetailsPage = () => {
     fetchTodayMovies();
   }, [movieId]);
 
-  useEffect(() => {
-    if (!location.pathname.includes('cast')) {
-      return;
-    }
-    const fetchCast = async () => {
-      try {
-        setLoading(true);
-        const { data } = await fetchMovieCast(movieId);
-
-        setMovieCast(data.cast);
-      } catch (error) {
-        setMovieCast(null);
-        notifyNoResultFound(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCast();
-  }, [movieId, location.pathname]);
-
-  useEffect(() => {
-    console.log(location.pathname);
-    if (!location.pathname.includes('reviews')) {
-      return;
-    }
-    const fetchRevies = async () => {
-      try {
-        setLoading(true);
-        const { data } = await fetchMovieReviews(movieId);
-
-        setMovieReviews(data.results);
-        console.log(data.results);
-      } catch (error) {
-        setMovieReviews(null);
-        notifyNoResultFound(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRevies();
-  }, [movieId, location.pathname]);
-
   return (
     <div>
       {movieDetails && <Movie movieDetails={movieDetails} />}
       <Routes>
-        <Route path="cast" element={<Cast movieCast={movieCast} />} />
-        <Route
-          path="reviews"
-          element={<Reviews movieReviews={movieReviews} />}
-        />
+        <Route path="cast" element={<Cast />} />
+        <Route path="reviews" element={<Reviews />} />
       </Routes>
 
       {loading && <Loader />}

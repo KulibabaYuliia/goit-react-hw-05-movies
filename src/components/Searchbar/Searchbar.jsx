@@ -27,27 +27,25 @@ export const Searchbar = () => {
   };
 
   return (
-    <StyledHeader>
-      <Formik
-        initialValues={{ query: '' }}
-        validationSchema={userSchema}
-        onSubmit={submitHandler}
-      >
-        <StyledSearchForm>
-          <StyledFormButton type="submit">
-            <span>Search</span>
-          </StyledFormButton>
+    <Formik
+      initialValues={{ query: '' }}
+      validationSchema={userSchema}
+      onSubmit={submitHandler}
+    >
+      <StyledSearchForm>
+        <StyledFormButton type="submit">
+          <span>Search</span>
+        </StyledFormButton>
 
-          <StyledFormInput
-            name="query"
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-          />
-          <ErrorMessage name="query" component="div" />
-        </StyledSearchForm>
-      </Formik>
-    </StyledHeader>
+        <StyledFormInput
+          name="query"
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+        />
+        <ErrorMessage name="query" component="div" />
+      </StyledSearchForm>
+    </Formik>
   );
 };

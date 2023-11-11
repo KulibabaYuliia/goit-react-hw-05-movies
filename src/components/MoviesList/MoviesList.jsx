@@ -1,19 +1,22 @@
-// import { StyledGallery } from './TrendingFilmsList.styled';
-import { Link, useLocation } from 'react-router-dom';
+import { MovieListItemLink, MoviesListStyled } from './MoviesList.styled';
+import { useLocation } from 'react-router-dom';
 
 const MoviesList = ({ trendingMovies }) => {
   const location = useLocation();
   return (
-    <ol>
+    <MoviesListStyled>
       {trendingMovies &&
         trendingMovies.map(movie => (
           <li key={movie.id}>
-            <Link state={{ from: location }} to={`/movies/${movie.id}`}>
+            <MovieListItemLink
+              state={{ from: location }}
+              to={`/movies/${movie.id}`}
+            >
               {movie.title}
-            </Link>
+            </MovieListItemLink>
           </li>
         ))}
-    </ol>
+    </MoviesListStyled>
   );
 };
 
