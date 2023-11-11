@@ -1,13 +1,16 @@
 // import { StyledGallery } from './TrendingFilmsList.styled';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MoviesList = ({ trendingMovies }) => {
+  const location = useLocation();
   return (
     <ol>
       {trendingMovies &&
         trendingMovies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link state={{ from: location }} to={`/movies/${movie.id}`}>
+              {movie.title}
+            </Link>
           </li>
         ))}
     </ol>

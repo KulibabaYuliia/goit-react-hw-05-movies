@@ -1,3 +1,5 @@
+// import React, { useState, useEffect } from 'react';
+// import { useParams, Route, Routes, useLocation } from 'react-router-dom';
 import { CastList, Portrait } from './Cast.styled';
 import defaultPoster from 'components/icons/defaultPortrait.png';
 

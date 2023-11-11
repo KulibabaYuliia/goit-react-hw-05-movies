@@ -22,7 +22,6 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(null);
 
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     const fetchTodayMovies = async () => {
@@ -43,6 +42,9 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   useEffect(() => {
+    if (!location.pathname.includes('cast')) {
+      return;
+    }
     const fetchCast = async () => {
       try {
         setLoading(true);
@@ -58,15 +60,20 @@ const MovieDetailsPage = () => {
     };
 
     fetchCast();
-  }, [movieId]);
+  }, [movieId, location.pathname]);
 
   useEffect(() => {
+    console.log(location.pathname);
+    if (!location.pathname.includes('reviews')) {
+      return;
+    }
     const fetchRevies = async () => {
       try {
         setLoading(true);
         const { data } = await fetchMovieReviews(movieId);
 
         setMovieReviews(data.results);
+        console.log(data.results);
       } catch (error) {
         setMovieReviews(null);
         notifyNoResultFound(error.message);
@@ -76,7 +83,7 @@ const MovieDetailsPage = () => {
     };
 
     fetchRevies();
-  }, [movieId]);
+  }, [movieId, location.pathname]);
 
   return (
     <div>

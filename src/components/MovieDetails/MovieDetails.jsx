@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import { MovieWrapper } from './MovieDetails.styled';
 import defaultPoster from 'components/icons/defaultPoster.png';
+import { useRef } from 'react';
 
 export const Movie = ({ movieDetails }) => {
   const moviePosterUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -8,8 +9,12 @@ export const Movie = ({ movieDetails }) => {
     movieDetails || {};
   const imageSrc = poster_path ? moviePosterUrl + poster_path : defaultPoster;
 
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/');
+
   return (
     <div>
+      <Link to={backLinkRef.current}>Go back</Link>
       <MovieWrapper>
         <img src={imageSrc} alt={title} width="300" />
         <div>
