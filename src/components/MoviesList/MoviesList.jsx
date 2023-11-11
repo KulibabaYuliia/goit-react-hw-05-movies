@@ -1,7 +1,7 @@
 import { MovieListItemLink, MoviesListStyled } from './MoviesList.styled';
 import { useLocation } from 'react-router-dom';
 
-const MoviesList = ({ trendingMovies }) => {
+export const MoviesList = ({ trendingMovies }) => {
   const location = useLocation();
   return (
     <MoviesListStyled>
@@ -19,5 +19,3 @@ const MoviesList = ({ trendingMovies }) => {
     </MoviesListStyled>
   );
 };
-
-export default MoviesList;

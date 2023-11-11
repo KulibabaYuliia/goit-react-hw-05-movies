@@ -5,7 +5,7 @@ import { Searchbar } from 'components/Searchbar/Searchbar';
 import { ToastContainer } from 'react-toastify';
 import { notifyNoResultFound } from 'components/Error/Error';
 import { useSearchParams } from 'react-router-dom';
-import SearchedMoviesList from 'components/MoviesList/MoviesList';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const MoviesPage = () => {
   const [searchedMovies, setSearchedMovies] = useState(null);
@@ -42,7 +42,7 @@ const MoviesPage = () => {
   return (
     <div>
       <Searchbar searchedMovies={searchedMovies} />
-      <SearchedMoviesList trendingMovies={searchedMovies} />
+      <MoviesList trendingMovies={searchedMovies} />
       {loading && <Loader />}
       <ToastContainer />
     </div>
