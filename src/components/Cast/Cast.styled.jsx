@@ -8,4 +8,5 @@ export const CastList = styled.ul`
 
 export const Portrait = styled.img`
   height: 220px;
+  border-radius: 4px;
 `;

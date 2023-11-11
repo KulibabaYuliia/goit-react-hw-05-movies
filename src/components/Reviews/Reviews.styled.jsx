@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 
-export const CastList = styled.ul`
+export const ReviewsList = styled.ul`
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
-`;
+  flex-direction: column;
 
-export const Portrait = styled.img`
-  height: 220px;
+  li {
+    max-width: 700px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
 `;

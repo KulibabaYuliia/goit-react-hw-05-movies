@@ -2,7 +2,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   MovieWrapper,
   GoBackStyled,
-  MovieDetailsStyled,
+  MovieDetailsWrapper,
+  AdditionalInfoLink,
 } from './MovieDetails.styled';
 import defaultPoster from 'components/icons/defaultPoster.png';
 import { useRef } from 'react';
@@ -17,11 +18,11 @@ export const Movie = ({ movieDetails }) => {
   const backLinkRef = useRef(location.state?.from ?? '/');
 
   return (
-    <MovieDetailsStyled>
+    <div>
       <GoBackStyled to={backLinkRef.current}>&#8592; Go back</GoBackStyled>
       <MovieWrapper>
         <img src={imageSrc} alt={title} width="300" />
-        <div>
+        <MovieDetailsWrapper>
           <h2>
             {title} ({release_date.slice(0, 4)})
           </h2>
@@ -34,19 +35,19 @@ export const Movie = ({ movieDetails }) => {
               <li key={genre.name}>{genre.name}</li>
             ))}
           </ul>
-        </div>
+        </MovieDetailsWrapper>
       </MovieWrapper>
-      <div>
-        <p>Additional information</p>
+      <MovieDetailsWrapper>
+        <h3>Additional information</h3>
         <ul>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
           </li>
           <li>
-            <NavLink to="reviews">Reviews</NavLink>
+            <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
           </li>
         </ul>
-      </div>
-    </MovieDetailsStyled>
+      </MovieDetailsWrapper>
+    </div>
   );
 };

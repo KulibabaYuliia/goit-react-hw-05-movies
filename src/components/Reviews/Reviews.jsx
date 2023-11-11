@@ -1,9 +1,9 @@
-// import { CastList } from './Cast.styled';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviews } from 'components/Api/Api';
 import { notifyNoResultFound } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
+import { ReviewsList } from './Reviews.styled';
 
 export const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState(null);
@@ -31,14 +31,14 @@ export const Reviews = () => {
   return (
     <>
       {!loading && movieReviews && movieReviews.length !== 0 && (
-        <ul>
+        <ReviewsList>
           {movieReviews.map(({ author, content, id }) => (
             <li key={id}>
-              <p>Author: {author}</p>
+              <h3>Author: {author}</h3>
               <p>{content}</p>
             </li>
           ))}
-        </ul>
+        </ReviewsList>
       )}
 
       {!loading && movieReviews?.length === 0 && <div>No reviews yet</div>}
