@@ -1,5 +1,4 @@
 import {
-  StyledHeader,
   StyledSearchForm,
   StyledFormButton,
   StyledFormInput,
