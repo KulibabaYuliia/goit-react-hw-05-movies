@@ -8,7 +8,7 @@ import { Loader } from 'components/Loader/Loader';
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
-export const Cast = () => {
+const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
   const [loading, setLoading] = useState(null);
   const { movieId } = useParams();
@@ -51,3 +51,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

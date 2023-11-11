@@ -5,7 +5,7 @@ import { notifyNoResultFound } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { ReviewsList } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState(null);
   const [loading, setLoading] = useState(null);
   const { movieId } = useParams();
@@ -47,3 +47,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;
